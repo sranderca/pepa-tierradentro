@@ -22,45 +22,89 @@ export default async function Home() {
   return (
     <main className="min-h-screen">
       {/* SECCIÓN HERO (PORTADA) */}
-      <section className="relative w-full h-[85vh] flex items-center overflow-hidden bg-segovia-black">
-        {/* Imagen de Fondo de Pepa */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/pepa-herofull.png"
-            alt="Pepa en Tierradentro"
-            fill
-            priority
-            quality={100}
-            className="object-cover object-[35%_center] md:object-center"
-          />
-        </div>
+      <section className="relative w-full bg-segovia-black">
+        {/* ==========================================
+            1. VERSIÓN MÓVIL (Pepa arriba, texto abajo tipo tarjeta)
+           ========================================== */}
+        <div className="md:hidden flex flex-col w-full bg-segovia-black pb-8">
+          {/* Foto de Pepa arriba con altura fija */}
+          <div className="relative w-full h-[380px]">
+            <Image
+              src="/pepa-herofull.png"
+              alt="Pepa en Tierradentro"
+              fill
+              priority
+              quality={100}
+              className="object-cover object-[35%_center]"
+            />
+            {/* Un pequeño degradé abajo de la foto para que funda bonito con el bloque negro */}
+            <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-segovia-black to-transparent" />
+          </div>
 
-        {/* Gradiente inteligente: Transparente en la cara de Pepa (izq), oscuro en el texto (der) en PC. Oscuro parejo en móviles. */}
-        <div className="absolute inset-0 bg-segovia-black/60 md:bg-transparent md:bg-gradient-to-r md:from-transparent md:from-40% md:to-segovia-black/95 z-0" />
-
-        {/* Contenido de la Portada - Alineado a la derecha en PC para dejar ver a Pepa */}
-        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-12 h-full flex items-center justify-center md:justify-end">
-          <div className="max-w-xl text-center md:text-right flex flex-col items-center md:items-end">
+          {/* Contenido abajo */}
+          <div className="px-6 pt-2 text-center flex flex-col items-center">
             <span className="bg-pepa-tan/90 text-segovia-black text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full mb-4 shadow-sm">
               La Guía de Cuatro Patas de Tierradentro
             </span>
-            <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight drop-shadow-md mb-6 leading-tight">
-              Tu Aventura Comienza <br className="hidden md:inline" /> Con{" "}
+            <h1 className="text-3xl font-black text-white tracking-tight mb-4 leading-tight">
+              Tu Aventura Comienza Con{" "}
               <span className="text-pepa-tan">Pepa</span>
             </h1>
-            <p className="text-lg md:text-xl text-misty-cloud/95 font-medium mb-8 drop-shadow-lg md:pl-8">
+            <p className="text-base text-misty-cloud/95 font-medium mb-6 leading-relaxed">
               Conoce a la perrita callejera que se convirtió en el alma del
-              parque arqueologico de Tierradentro, acompaña a los turistas en
+              parque arqueológico de Tierradentro, acompaña a los turistas en
               los hipogeos y ayuda a proteger a más perritos de la zona.
             </p>
-
-            {/* Botón de Donar */}
             <a
               href="#donaciones"
-              className="bg-terracotta-earth hover:bg-terracotta-earth/90 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+              className="w-full bg-terracotta-earth hover:bg-terracotta-earth/90 text-white font-bold text-base px-6 py-3.5 rounded-full shadow-lg transition-all"
             >
               Donar para Alimento y Cuidados 🐾
             </a>
+          </div>
+        </div>
+
+        {/* ==========================================
+            2. VERSIÓN COMPUTADOR (Tu diseño original intacto)
+           ========================================== */}
+        <div className="hidden md:flex relative w-full h-[85vh] items-center overflow-hidden">
+          {/* Imagen de Fondo de Pepa */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/pepa-herofull.png"
+              alt="Pepa en Tierradentro"
+              fill
+              priority
+              quality={100}
+              className="object-cover object-center"
+            />
+          </div>
+
+          {/* Gradiente inteligente */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent from-40% to-segovia-black/95 z-0" />
+
+          {/* Contenido de la Portada */}
+          <div className="relative z-10 container mx-auto px-6 lg:px-12 h-full flex items-center justify-end">
+            <div className="max-w-xl text-right flex flex-col items-end">
+              <span className="bg-pepa-tan/90 text-segovia-black text-xs font-bold tracking-widest uppercase px-3 py-1.5 rounded-full mb-4 shadow-sm">
+                La Guía de Cuatro Patas de Tierradentro
+              </span>
+              <h1 className="text-5xl lg:text-6xl font-black text-white tracking-tight drop-shadow-md mb-6 leading-tight">
+                Tu Aventura Comienza <br /> Con{" "}
+                <span className="text-pepa-tan">Pepa</span>
+              </h1>
+              <p className="text-lg lg:text-xl text-misty-cloud/95 font-medium mb-8 drop-shadow-lg pl-8">
+                Conoce a la perrita callejera que se convirtió en el alma del
+                parque arqueologico de Tierradentro, acompaña a los turistas en
+                los hipogeos y ayuda a proteger a más perritos de la zona.
+              </p>
+              <a
+                href="#donaciones"
+                className="bg-terracotta-earth hover:bg-terracotta-earth/90 text-white font-bold text-lg px-8 py-4 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+              >
+                Donar para Alimento y Cuidados 🐾
+              </a>
+            </div>
           </div>
         </div>
       </section>
