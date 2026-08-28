@@ -31,7 +31,7 @@ export default async function Home() {
             fill
             priority
             quality={100}
-            className="object-cover object-center"
+            className="object-cover object-[65%_center]"
           />
         </div>
 
