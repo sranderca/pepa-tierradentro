@@ -5,9 +5,9 @@ export default async function Home() {
   async function getAventureros() {
     try {
       const res = await fetch(
-        "http://localhost:1337/api/aventureros?populate=*",
+        "https://pepa-backend-production-6425.up.railway.app/api/aventureros?populate=*",
         {
-          cache: "no-store", // Desactiva el caché para ver los cambios apenas publiques en Strapi
+          cache: "no-store",
         },
       );
       const data = await res.json();
@@ -173,7 +173,7 @@ export default async function Home() {
 
               // 3. Strapi v5 también simplificó la ruta de la imagen, ya no usa data.attributes
               const fotoUrl = image?.url
-                ? `http://localhost:1337${image.url}`
+                ? `https://pepa-backend-production-6425.up.railway.app${image.url}`
                 : "/pepa-segovia.jpg"; // Foto de respaldo
 
               return (

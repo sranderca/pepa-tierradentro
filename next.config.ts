@@ -4,9 +4,8 @@ const nextConfig = {
     dangerouslyAllowLocalIP: true, // <-- Esta es la llave que quita el bloqueo
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "localhost",
-        port: "1337",
+        protocol: "https",
+        hostname: "pepa-backend-production-6425.up.railway.app",
         pathname: "/uploads/**",
       },
     ],
